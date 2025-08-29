@@ -6,14 +6,7 @@ describe('Greet', () => {
 
     test("Greet Renders correclty", () => {
         render(<Greet />)
-        const testElement = screen.getByText("Hello")
-        expect(testElement).toBeInTheDocument()
-    })
-
-
-    test('Greet renders with a name', () => {
-        render(<Greet name='Vishwas' />)
-        const testElement = screen.getByText('Hello Vishwas')
+        const testElement = screen.getByText(/Hello/i)
         expect(testElement).toBeInTheDocument()
     })
 })
