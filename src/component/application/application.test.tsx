@@ -21,6 +21,9 @@ describe('Application', () => {
         })
         expect(nameElement).toBeInTheDocument()
 
+        const paragraphElement = screen.getByText("All filed are mandatory")
+        expect(paragraphElement).toBeInTheDocument();
+
         const bioElement = screen.getByRole('textbox', {
             name: "bio"
         })
