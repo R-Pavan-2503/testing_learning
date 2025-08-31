@@ -16,4 +16,34 @@ describe("skills", () => {
         const listItemElement = screen.getAllByRole('listitem')
         expect(listItemElement).toHaveLength(skills.length)
     })
+
+    test("rende login button", () => {
+        render(<Skllis skills={skills} />)
+        const loginButton = screen.getByRole('button', {
+            name: 'Login'
+        })
+
+        expect(loginButton).toBeInTheDocument();
+    })
+
+    test("start learning button not render", () => {
+        render(<Skllis skills={skills} />)
+        const startlearningbutton = screen.queryByRole('button', {
+            name: /start learning/i,
+        })
+
+        expect(startlearningbutton).not.toBeInTheDocument()
+    })
+
+    test("start learning button is render eventually", async () => {
+        render(<Skllis skills={skills} />)
+        const startlearningbutton = await screen.findByRole('button', {
+            name: /start learning/i,
+        },
+            {
+                timeout: 2000,
+            })
+
+        expect(startlearningbutton).toBeInTheDocument()
+    })
 })
